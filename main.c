@@ -1,79 +1,107 @@
+// Чистяков Дмитрий. ДЗ 2.
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-int main(int argc, char *argv[]) {
+void solution1();
+//Ввести a и b и вывести
+// квадраты и кубы чисел от a до b.
 
-    // Про шахматную доску и координаты -------------------
-    int x1,y1,x2,y2;
-    char color1, color2;
-    printf("\n Input coord x1 :");
-    scanf("%d", &x1);
-    printf("\n Input y1 :");
-    scanf("%d", &y1);
-    if  (((y1 % 2 != 0) & (x1 % 2 != 0)) || ((y1 % 2 == 0) & (x1 % 2 == 0))) {
-        color1 = 'w';
-    } else {
-        color1 = 'b';
+void solution2();
+// Даны целые положительные числа N и K.
+// Используя только операции сложения и вычитания,
+// найти частное от деления нацело N на K,
+// а также остаток от этого деления.
+
+void solution3();
+
+//Дано целое число N (> 0). С помощью операций деления
+// нацело и взятия остатка от деления
+//определить, имеются ли в записи числа N
+// нечетные цифры. Если имеются, то вывести True,
+// если нет — вывести False.
+_Bool checkUneven(int n);
+
+void menu();
+
+int main() {
+
+    int sel;
+    do {
+        menu();
+        scanf("%i", &sel);
+        switch (sel) {
+            case 1:
+                solution1();
+                break;
+            case 2:
+                solution2();
+                break;
+            case 3:
+                solution3();
+                break;
+            case 0:
+                printf("Bye-bye");
+                break;
+            default:
+                printf("Wrong selected\n");
+                break;
+        }
+    } while (sel != 0);
+    return 0;
+}
+
+void solution1() {
+    printf("Solution 1\n");
+    int a, b;
+    printf("\n Input a:");
+    scanf("%d", &a);
+    printf("\n Input b :");
+    scanf("%d", &b);
+    for (int i = a; i <= b; i++) {
+        printf("%10i%10i\n", (i * i), (i * i * i));
     }
-    printf("\n Color 1 :%c\n", color1);
+}
 
-    printf("\n Input x2 :");
-    scanf("%d", &x2);
-    printf("\n Input y2 :");
-    scanf("%d", &y2);
-    if  (((y2 % 2 != 0) & (x2 % 2 != 0)) || ((y2 % 2 == 0) & (x2 % 2 == 0))) {
-        color2 = 'w';
-    } else {
-        color2 = 'b';
+void solution2() {
+    printf("Solution 2\n");
+    int n, k, quot;
+    n = 17;
+    k = 2;
+    quot = 0;
+    while (n - k >= 0) {
+        quot++;
+        n -= k;
     }
-    printf("\n Color 2 :%c\n", color2);
+    printf("Quotient: %3i, modulo: %3i\n", quot, n);
+    system("pause");
+}
 
-    if (color1 == color2) {
-        printf("\n Color the same.");
+void solution3() {
+    printf("Solution 3\n");
+    int n;
+    printf("\n Input n:");
+    scanf("%d", &n);
+    if (checkUneven(n)) {
+        printf("true \n");
     } else {
-        printf("\n Color NOT same.");
+        printf("false \n");
     }
-    printf("\n");
     system("pause");
+}
 
-    // Обмен двух чисел a , b без посредников --------------
-    int a,b;
-    a = 5; b = 123644;
-    printf("A = %d, B = %d \n",a,b);
-    system("pause");
-    a = a + b;
-    b = a - b;
-    a = a - b;
-    printf("Now A = %d, B = %d \n",a,b);
+_Bool checkUneven(int n) {
+    do {
+        if (((n % 10) % 2) != 0) return true;
+        n = (int) (n / 10);
+    } while (n > 0);
+    return false;
+}
 
-    // Индекс массы тела BMI -------------------------
-    float h;
-    int m;
-
-    printf("\n Input h (v metrah):");
-    scanf("%f", &h);
-    printf("Input m :");
-    scanf("%d", &m);
-
-    float bmi = m / ( h * h);
-    printf("Body mass index = %f\n", bmi);
-    system("pause");
-
-        return 0;
-
-    // ввод данных с проверкой--------------
-    //
-    //        int n,count=0;
-    //        metka:
-    //        count++;
-    //        printf("%d. Input number:",count);
-    //        if (scanf("%d",&n)==0)
-    //        {
-    //            fflush(stdin); //очищаем поток ввода
-    //            goto metka;
-    //        }
-    //        printf("Count %d",count);
-    //
-
-
+void menu() {
+    printf("\n1-task1\n");
+    printf("2-task2\n");
+    printf("3-task3\n");
+    printf("0-exit\n");
 }

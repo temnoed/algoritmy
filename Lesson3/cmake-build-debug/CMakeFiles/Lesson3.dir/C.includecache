@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+D:/Coding/Ci/Lesson3/MyLib.h
+stdio.h
+-
+
 D:/Coding/Ci/Lesson3/main.c
 stdio.h
 -
@@ -13,4 +17,10 @@ stdlib.h
 -
 stdbool.h
 -
+math.h
+-
+sys/time.h
+-
+MyLib.h
+D:/Coding/Ci/Lesson3/MyLib.h
 

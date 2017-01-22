@@ -6,15 +6,9 @@
 
 #IncludeRegexTransform: 
 
-D:/Coding/Ci/Lesson3/main.c
+D:/Coding/Ci/Lesson4/main.c
 stdio.h
 -
 stdlib.h
--
-stdbool.h
--
-math.h
--
-sys/time.h
 -
 

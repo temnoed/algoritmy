@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <sys/time.h>
-#include "MyLib.h"
+// include "MyLib.h"
 
 // Запоминаем в глобальных переменных текущее время
 struct timeval tv1, tv2, dtv;
@@ -116,7 +116,7 @@ void solution3() {
 }
 
 void solution4() {
-    int sumDigits(long a) {
+    int sumDigits (long a) {
         int s = 0;
         while (a > 0) {
             s = s + a % 10;
@@ -127,11 +127,11 @@ void solution4() {
     int n = 0;
     time_start();
     for (int i = 1; i <= 1000000; i++) {
-        if (i % sumDigits(i) == 0) n += 1;
+        if (i % sumDigits (i) == 0) n += 1;
     }
     printf("\nGood nums %i", n);
     printf("\nTime: %ld millisecond\n", time_stop());
-    pauseMy(); // из "моей" библиотеки
+    // pauseMy(); // из "моей" библиотеки
     return;
 }
 

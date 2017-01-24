@@ -1,0 +1,3 @@
+D:/Coding/Ci/Lesson4_timetest/cmake-build-debug/CMakeFiles/Lesson4_timetest.dir
+D:/Coding/Ci/Lesson4_timetest/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Coding/Ci/Lesson4_timetest/cmake-build-debug/CMakeFiles/rebuild_cache.dir

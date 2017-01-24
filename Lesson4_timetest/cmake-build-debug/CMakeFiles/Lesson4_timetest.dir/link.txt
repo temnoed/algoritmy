@@ -1,0 +1,3 @@
+"C:\Program Files (x86)\JetBrains\CLion 2016.3.2\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\Lesson4_timetest.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\Lesson4_timetest.dir/objects.a @CMakeFiles\Lesson4_timetest.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe  -g   -Wl,--whole-archive CMakeFiles\Lesson4_timetest.dir/objects.a -Wl,--no-whole-archive  -o Lesson4_timetest.exe -Wl,--out-implib,libLesson4_timetest.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Lesson4_timetest.dir\linklibs.rsp

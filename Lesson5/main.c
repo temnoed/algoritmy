@@ -13,9 +13,12 @@ void solution1(int arr[]);
 void solution2(int arr[]);
 
 // шейкерная
-void solution3(int arr[]);
-//
+void solution3(int *arr);
 
+// 3.	Реализовать бинарный алгоритм поиска в виде функции,
+// которой передается отсортированный массив.
+// Функция возвращает индекс найденного элемента или -1,
+// если элемент не найден.
 void solution4(int arr[]);
 
 void swap(int *a, int *b);
@@ -50,6 +53,8 @@ int main() {
                 solution3(arr);
                 break;
             case 4:
+                init(arr, array);
+                // передаём отсортированный массив
                 solution4(arr);
                 break;
 
@@ -155,7 +160,22 @@ void solution3(int *arr) {
     return;
 }
 
-void solution4(int _arr[]) {
+int findIdxBin (int *arr, int x) {
+    int result;
+    
+    return result;
+}
+
+// 3.	Реализовать бинарный алгоритм поиска в виде функции,
+// которой передается отсортированный массив.
+// Функция возвращает индекс найденного элемента или -1,
+// если элемент не найден.
+void solution4(int *arr) {
+    int x;
+    puts("Vvedite element X dlya poiska: ");
+    scanf("%d", &x);
+    printf("Naiden index: %d \n", findIdxBin( arr, x));
+    system("pause");
     return;
 }
 

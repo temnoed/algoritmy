@@ -1,6 +1,8 @@
 // Чистяков Дмитрий. ДЗ 6.
+// Сделаны основные задачи и две со звёздочками
 // Вопросы: что происходит с памятью если не освобождать её методом free,
 // например, если произошёл return и внутри блока была инициализирована *str?
+//
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -32,16 +34,26 @@ void solution3(char *ptrStr);
 size_t MyStrLen(char *ptrStr);
 
 // 1-d which vowel is more repeated
+// e.	**Предусмотреть, что некоторые гласные могут встречаться одинаково часто.
+// В этом случае вывести сообщение, что нет наиболее часто встречающейся гласной.
 void solution5(char *ptrStr);
 
 void menu();
 
 // ищем наибольшее число в массиве
 int getMax(int *_arr, unsigned int length);
+
 // ищем индекс наибольшего числа в массиве
-unsigned  int getMaxIdx(int *_arr, unsigned int length) ;
+int getMaxIdx(int *_arr, unsigned int length);
+
+// поиск индекса первого дубликата
+int findDublicateIdx(unsigned int n, int *array);
+
+// проверка есть ли дубликат у данного индекса
+int hasDublicates(int idx, int *array, unsigned int length);
+
 // вывод массива на  экран
-void showArray(int *_arr, unsigned int length) ;
+void showArray(int *_arr, unsigned int length);
 
 int main() {
     //Строка, которая используется
@@ -129,11 +141,13 @@ size_t MyStrLen(char *ptrStr) {
     return result;
 }
 
-// 1-d. Какая гласная чаще других.
+// 1-d, e. Какая гласная чаще других.
+// e.	**Предусмотреть, что некоторые гласные могут встречаться одинаково часто.
+// В этом случае вывести сообщение, что нет наиболее часто встречающейся гласной.
 void solution5(char *ptrStr) {
     char strVowel[13] = "AEIOUYaeiouy";
     // создадим массив-счётчик гласных по номерам
-    int amtVowels[6]={0,0,0,0,0,0};
+    int amtVowels[6] = {0, 0, 0, 0, 0, 0};
     char result = 0;
     size_t position = 0;
     int i;
@@ -142,12 +156,12 @@ void solution5(char *ptrStr) {
         // проходимся по всем гласным
         for (i = 0; i < 6; i++) {
             // если найдена гласная ЗАГЛАВНАЯ
-            if ( *(ptrStr + position) == (*(strVowel + i) ) ) {
+            if (*(ptrStr + position) == (*(strVowel + i))) {
                 // увеличиваем её счётчик
                 amtVowels[i]++;
             }
             // если найдена маленькая гласная тоже
-            if ( *(ptrStr + position) == (*(strVowel + i + 6) )) {
+            if (*(ptrStr + position) == (*(strVowel + i + 6))) {
                 // увеличиваем её счётчик
                 amtVowels[i]++;
             }
@@ -156,8 +170,12 @@ void solution5(char *ptrStr) {
     }
     printf("number vow    amt vow\n");
     showArray(amtVowels, 6);
-    result = strVowel[getMaxIdx(amtVowels, 6)];
-    printf("More repeated vowel: %c\n", result);
+
+    if (hasDublicates(getMaxIdx(amtVowels, 6), amtVowels, 6) == -1) {
+        result = strVowel[getMaxIdx(amtVowels, 6)];
+        printf("More repeated vowel: %c\n", result);
+    } else puts("There are NO more repeated vowel !\n");
+
 }
 
 void menu() {
@@ -165,7 +183,7 @@ void menu() {
     puts("2-task 1-a count symbols in string");
     puts("3-task 1-b are there vowel letters");
     puts("4-task4 1-c MyStrLen");
-    puts("5-task4 1-d which vowel is more repeated");
+    puts("5-task4 1-d,e which vowel is more repeated");
     puts("0-exit");
 }
 
@@ -221,18 +239,18 @@ struct MyString getMyStr() {
     }
 }
 
-//------------------------------------------------
-int getMax(int *_arr, unsigned int length) { // ищем наибольшее число в массиве
+// --------------- ищем наибольшее число в массиве
+int getMax(int *_arr, unsigned int length) {
     int max = _arr[0];
     for (int i = 1; i < length; i++)
         if (_arr[i] > max)
             max = _arr[i];
     return max;
 }
-//--------------------------------
-unsigned  int getMaxIdx(int *_arr, unsigned int length) { // ищем наибольшее число в массиве
+// --------------------ищем индекс наибольшего числа в массиве
+int getMaxIdx(int *_arr, unsigned int length) {
     int max = _arr[0];
-    unsigned int result = 0;
+    int result = 0;
     for (unsigned int i = 1; i < length; i++)
         if (_arr[i] > max) {
             max = _arr[i];
@@ -240,10 +258,30 @@ unsigned  int getMaxIdx(int *_arr, unsigned int length) { // ищем наибо
         }
     return result;
 }
+
 //----------------------
 void showArray(int *_arr, unsigned int length) {
     for (int i = 0; i < length; i++) {
         printf("%10i%10i\n", i, _arr[i]);
     }
     system("pause");
+}
+
+// проверка на дубликаты  возвращает индекс первого найденного дубликат или -1.
+int findDublicateIdx(unsigned int n, int *array) {
+    int i, j;
+    for (i = 0; i < n; i++)
+        for (j = 0; j < n; j++)
+            if (i != j)
+                if (array[i] == array[j]) return i;
+    return -1;
+}
+
+//----------------------------------------
+int hasDublicates(int idx, int *array, unsigned int length) {
+    int i;
+    for (i = 0; i < length; i++)
+        if (i != idx)
+            if (array[i] == array[idx]) return i;
+    return -1;
 }

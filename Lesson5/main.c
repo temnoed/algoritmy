@@ -7,10 +7,10 @@
 #define MaxArr 20 // компилятору размер массива
 
 // пузырьковая
-void solution1(int arr[]);
+int* solution1(int arr[]);
 
 // оптимизированная пузырьковая
-void solution2(int arr[]);
+int* solution2(int arr[]);
 
 // шейкерная
 void solution3(int *arr);
@@ -55,7 +55,7 @@ int main() {
             case 4:
                 init(arr, array);
                 // передаём отсортированный массив
-                solution4(arr);
+                solution4(solution2(arr));
                 break;
 
             case 0:
@@ -70,7 +70,7 @@ int main() {
 }
 
 // bubble sort
-void solution1(int *arr) {
+int* solution1(int *arr) {
     int n = MaxArr;
     int i;
     int j = 0;
@@ -91,11 +91,11 @@ void solution1(int *arr) {
     print(n, arr);
     printf("\ncount= %d\n", count);
     system("pause");
-    return;
+    return arr;
 }
 
 // опитимизированная пузырьковая
-void solution2(int *arr) {
+int* solution2(int *arr) {
     int n = MaxArr;
     int i;
     int j = 0;
@@ -122,7 +122,7 @@ void solution2(int *arr) {
     print(n, arr);
     printf("\ncount= %d\n", count);
     system("pause");
-    return;
+    return arr;
 }
 
 // шейкерная:
@@ -159,10 +159,20 @@ void solution3(int *arr) {
     system("pause");
     return;
 }
-
-int findIdxBin (int *arr, int x) {
+// бинарный поиск индекса в отсортированном массиве
+int searchBinIdx(int arr[], int value) {
+    print(MaxArr, arr);
     int result;
-    
+    int m = MaxArr;
+    int l = 0, r = m - 1;
+    m = l + (r - l) / 2;
+    while (l <= r && arr[m] != value) {
+        if (arr[m] < value) l = m + 1;
+        else r = m - 1;
+        m = l + (r - l) / 2;
+    }
+    if (arr[m] == value) result = m;
+      else result = -1;
     return result;
 }
 
@@ -170,11 +180,12 @@ int findIdxBin (int *arr, int x) {
 // которой передается отсортированный массив.
 // Функция возвращает индекс найденного элемента или -1,
 // если элемент не найден.
-void solution4(int *arr) {
+void solution4(int *_arr) {
+    print(MaxArr, _arr);
     int x;
     puts("Vvedite element X dlya poiska: ");
-    scanf("%d", &x);
-    printf("Naiden index: %d \n", findIdxBin( arr, x));
+    scanf("%i", &x);
+    printf("Naiden index: %d \n", searchBinIdx(_arr, x));
     system("pause");
     return;
 }
@@ -184,7 +195,7 @@ void menu() {
     printf("\n1-task1 bubble sort\n");
     printf("2-task2 bubble optimised\n");
     printf("3-task3 cocktail \n");
-    printf("4-task4 \n");
+    printf("4-task4 search binary\n");
     printf("0-exit\n");
 }
 

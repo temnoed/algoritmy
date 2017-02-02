@@ -1,0 +1,3 @@
+D:/Coding/Ci/KnightMove/cmake-build-debug/CMakeFiles/KnightMove.dir
+D:/Coding/Ci/KnightMove/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Coding/Ci/KnightMove/cmake-build-debug/CMakeFiles/rebuild_cache.dir

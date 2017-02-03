@@ -1,7 +1,9 @@
-// Чистяков Дмитрий. ДЗ
+// Чистяков Дмитрий. ДЗ 7.
 #include <stdio.h>
+#include <stdlib.h>
+#include <mem.h>
 
-//
+// 1.	Реализовать функцию перевода из 10 системы в двоичную используя рекурсию.
 void solution1();
 
 //
@@ -24,15 +26,15 @@ int main() {
             case 1:
                 solution1();
                 break;
-            case 2:
-                solution2();
-                break;
-            case 3:
-                solution3();
-                break;
-            case 4:
-                solution4();
-                break;
+//            case 2:
+//                solution2();
+//                break;
+//            case 3:
+//                solution3();
+//                break;
+//            case 4:
+//                solution4();
+//                break;
 
             case 0:
                 printf("Bye-bye");
@@ -45,7 +47,29 @@ int main() {
     return 0;
 }
 
+// 1.	Реализовать функцию перевода из 10 системы в двоичную используя рекурсию.
 void solution1() {
+    int dex, binLength = 0;
+    char resultStr[] = "";
+
+    void convert(int num, char* snum) {
+        if (num % 2 == 0)
+            strcat(snum, "0");
+        else strcat(snum, "1");
+        if ((num / 2) != 0) convert(num / 2, snum);
+        else return;
+    }
+
+    puts("Enter DEX number: ");
+    scanf("%i", &dex);
+    convert(dex, resultStr);
+    binLength = strlen(resultStr);
+    char revers[binLength];
+    for (int i = 0; i < binLength  ; ++i) {
+        revers [i] = resultStr [binLength - 1-i];
+    }
+    printf("%s\n", revers);
+    system("pause");
     return;
 }
 
@@ -62,10 +86,10 @@ void solution4() {
 }
 
 void menu() {
-    printf("\n1-task1 \n");
-    printf("2-task2 \n");
-    printf("3-task3 \n");
-    printf("4-task4 \n");
+    printf("\n1- binary \n");
+//    printf("2-task2 \n");
+//    printf("3-task3 \n");
+//    printf("4-task4 \n");
 
     printf("0-exit\n");
 }

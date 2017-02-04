@@ -1,0 +1,3 @@
+D:/Coding/Ci/Lesson8/cmake-build-debug/CMakeFiles/Lesson8.dir
+D:/Coding/Ci/Lesson8/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Coding/Ci/Lesson8/cmake-build-debug/CMakeFiles/rebuild_cache.dir

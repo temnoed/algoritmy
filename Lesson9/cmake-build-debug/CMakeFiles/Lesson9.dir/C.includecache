@@ -9,4 +9,8 @@
 D:/Coding/Ci/Lesson9/main.c
 stdio.h
 -
+stdlib.h
+-
+conio.h
+-
 
